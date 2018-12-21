@@ -2,9 +2,9 @@
 version: '3.2'
 
 networks:
-  skcript:
+  hlffabric1:
     external: 
-      name: skcript
+      name: hlffabric1
 
 services:
   
@@ -22,6 +22,7 @@ services:
     working_dir: /opt/gopath/src/github.com/hyperledger/fabric/orderer
     command: orderer
     hostname: orderer1.example.com
+    container_name: orderer1.example.com
     environment:
       - ORDERER_GENERAL_LOGLEVEL=debug
       - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
@@ -53,13 +54,13 @@ services:
       - ORDERER_ABSOLUTEMAXBYTES=10MB
       - ORDERER_PREFERREDMAXBYTES=512KB
     volumes:
-      - /var/mynetwork/certs/crypto-config/ordererOrganizations/example.com/users:/var/hyperledger/users
-      - /var/mynetwork/certs/crypto-config/ordererOrganizations/example.com/orderers/orderer1.example.com/msp:/var/hyperledger/msp
-      - /var/mynetwork/certs/crypto-config/ordererOrganizations/example.com/orderers/orderer1.example.com/tls:/var/hyperledger/tls
-      - /var/mynetwork/certs/config/:/var/hyperledger/config
+      - /home/ubuntu/efsmount/mynetwork/certs/crypto-config/ordererOrganizations/example.com/users:/var/hyperledger/users
+      - /home/ubuntu/efsmount/mynetwork/certs/crypto-config/ordererOrganizations/example.com/orderers/orderer1.example.com/msp:/var/hyperledger/msp
+      - /home/ubuntu/efsmount/mynetwork/certs/crypto-config/ordererOrganizations/example.com/orderers/orderer1.example.com/tls:/var/hyperledger/tls
+      - /home/ubuntu/efsmount/mynetwork/certs/config/:/var/hyperledger/config
     ports:
       - 8050:7050
     networks:
-      skcript:
+      hlffabric1:
         aliases:
           - orderer1.example.com

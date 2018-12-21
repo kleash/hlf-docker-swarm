@@ -2,9 +2,9 @@
 version: '3.2'
 
 networks:
-  skcript:
+  hlffabric1:
     external: 
-      name: skcript
+      name: hlffabric1
 
 services:
 
@@ -20,10 +20,11 @@ services:
           - node.hostname == intel-sawtooth
     image: hyperledger/fabric-peer:x86_64-1.1.0
     hostname: peer0.org2.example.com
+    container_name: peer0.org2.example.com
     environment:
       - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
-      - CORE_PEER_NETWORKID=skcript
-      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=skcript
+      - CORE_PEER_NETWORKID=hlffabric1
+      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=hlffabric1
       - CORE_PEER_ADDRESSAUTODETECT=true
       # - CORE_PEER_GOSSIP_ORGLEADER=false
       # - CORE_PEER_GOSSIP_USELEADERELECTION=true
@@ -51,16 +52,16 @@ services:
       - /var/run/:/host/var/run/
       # - $GOPATH/src/github.com/hyperledger/fabric/:/opt/gopath/src/github.com/hyperledger/fabric/
       # - ../crypto-config/:/var/hyperledger/config
-      - /var/mynetwork/certs/crypto-config/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/msp:/var/hyperledger/msp
-      - /var/mynetwork/certs/crypto-config/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls:/var/hyperledger/tls
-      - /var/mynetwork/certs/crypto-config/peerOrganizations/org2.example.com/users:/var/hyperledger/users
-      - /var/mynetwork/certs/config/:/var/hyperledger/config
+      - /home/ubuntu/efsmount/mynetwork/certs/crypto-config/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/msp:/var/hyperledger/msp
+      - /home/ubuntu/efsmount/mynetwork/certs/crypto-config/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls:/var/hyperledger/tls
+      - /home/ubuntu/efsmount/mynetwork/certs/crypto-config/peerOrganizations/org2.example.com/users:/var/hyperledger/users
+      - /home/ubuntu/efsmount/mynetwork/certs/config/:/var/hyperledger/config
     command: peer node start
     working_dir: /opt/gopath/src/github.com/hyperledger/fabric/peer
     depends_on:
       - couchdb0
     networks:
-      skcript:
+      hlffabric1:
         aliases:
           - peer0.org2.example.com
     ports:
@@ -79,10 +80,11 @@ services:
           - node.hostname == intel-sawtooth
     image: hyperledger/fabric-peer:x86_64-1.1.0
     hostname: peer1.org2.example.com
+    container_name: peer1.org2.example.com
     environment:
       - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
-      - CORE_PEER_NETWORKID=skcript
-      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=skcript
+      - CORE_PEER_NETWORKID=hlffabric1
+      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=hlffabric1
       - CORE_PEER_ADDRESSAUTODETECT=true
       # - CORE_PEER_GOSSIP_ORGLEADER=false
       # - CORE_PEER_GOSSIP_USELEADERELECTION=true
@@ -110,10 +112,10 @@ services:
       - /var/run/:/host/var/run/
       # - $GOPATH/src/github.com/hyperledger/fabric/:/opt/gopath/src/github.com/hyperledger/fabric/
       # - ../crypto-config/:/var/hyperledger/config
-      - /var/mynetwork/certs/crypto-config/peerOrganizations/org2.example.com/peers/peer1.org2.example.com/msp:/var/hyperledger/msp
-      - /var/mynetwork/certs/crypto-config/peerOrganizations/org2.example.com/peers/peer1.org2.example.com/tls:/var/hyperledger/tls
-      - /var/mynetwork/certs/crypto-config/peerOrganizations/org2.example.com/users:/var/hyperledger/users
-      - /var/mynetwork/certs/config/:/var/hyperledger/config
+      - /home/ubuntu/efsmount/mynetwork/certs/crypto-config/peerOrganizations/org2.example.com/peers/peer1.org2.example.com/msp:/var/hyperledger/msp
+      - /home/ubuntu/efsmount/mynetwork/certs/crypto-config/peerOrganizations/org2.example.com/peers/peer1.org2.example.com/tls:/var/hyperledger/tls
+      - /home/ubuntu/efsmount/mynetwork/certs/crypto-config/peerOrganizations/org2.example.com/users:/var/hyperledger/users
+      - /home/ubuntu/efsmount/mynetwork/certs/config/:/var/hyperledger/config
     command: peer node start
     working_dir: /opt/gopath/src/github.com/hyperledger/fabric/peer
     depends_on:
@@ -122,6 +124,6 @@ services:
       - 10051:7051
       - 10053:7053
     networks:
-      skcript:
+      hlffabric1:
         aliases:
           - peer1.org2.example.com

@@ -2,15 +2,15 @@
 version: '3.2'
 
 networks:
-    skcript:
+    hlffabric1:
         external: 
-            name: skcript
+            name: hlffabric1
 
 services:
 
     ca_org1:
         networks:
-            skcript:
+            hlffabric1:
                 aliases:
                     - ca_org1
         deploy:
@@ -24,6 +24,7 @@ services:
                     - node.hostname == intel-sawtooth
         image: hyperledger/fabric-ca:x86_64-1.1.0
         hostname: ca.org1.example.com
+	container_name: ca.org1.example.com
         environment:
             - FABRIC_CA_HOME=/etc/hyperledger/fabric-ca-server
             - FABRIC_CA_SERVER_CA_NAME=ca_org1
@@ -33,7 +34,7 @@ services:
             - "7054:7054"   
         command: sh -c 'fabric-ca-server start -b admin:adminpw -d'
         volumes:
-            - /var/mynetwork/certs/crypto-config/peerOrganizations/org1.example.com/ca/:/etc/hyperledger/fabric-ca-server-config
+            - /home/ubuntu/efsmount/mynetwork/certs/crypto-config/peerOrganizations/org1.example.com/ca/:/etc/hyperledger/fabric-ca-server-config
 
     cli:
         deploy:
@@ -48,6 +49,7 @@ services:
         image: hyperledger/fabric-tools:x86_64-1.1.0
         tty: true
         hostname: cli
+	container_name: cli
         environment:
           - GOPATH=/opt/gopath
           - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
@@ -66,14 +68,14 @@ services:
         command: /bin/bash
         volumes:
             - /var/run/:/host/var/run/
-            - /var/mynetwork/chaincode:/opt/gopath/src/github.com/chaincode
-            - /var/mynetwork/fabric-src/hyperledger/fabric:/opt/gopath/src/github.com/hyperledger/fabric
-            - /var/mynetwork/certs/crypto-config:/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto
-            - /var/mynetwork/certs/config:/var/hyperledger/config
-            - /var/mynetwork/bin/:/var/bin
-            # - /var/mynetwork/bin/jq:/usr/local/bin/jq
+            - /home/ubuntu/efsmount/mynetwork/chaincode:/opt/gopath/src/github.com/chaincode
+            - /home/ubuntu/efsmount/mynetwork/fabric-src/hyperledger/fabric:/opt/gopath/src/github.com/hyperledger/fabric
+            - /home/ubuntu/efsmount/mynetwork/certs/crypto-config:/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto
+            - /home/ubuntu/efsmount/mynetwork/certs/config:/var/hyperledger/config
+            - /home/ubuntu/efsmount/mynetwork/bin/:/var/bin
+            # - /home/ubuntu/efsmount/mynetwork/bin/jq:/usr/local/bin/jq
         networks:
-            - skcript
+            - hlffabric1
 
     couchdb0_org1:
         deploy:
@@ -87,8 +89,11 @@ services:
                     - node.hostname == intel-sawtooth
         image: hyperledger/fabric-couchdb:x86_64-0.4.6
         hostname: couchdb0_org1
+	container_name: couchdb0_org1
         networks:
-           - skcript    
+           - hlffabric1   
+        ports:
+            - "7984:5984"
 
     couchdb1_org1:
         deploy:
@@ -102,5 +107,8 @@ services:
                     - node.hostname == intel-sawtooth
         image: hyperledger/fabric-couchdb:x86_64-0.4.6
         hostname: couchdb1_org1
+	container_name: couchdb1_org1
         networks:
-           - skcript    
+           - hlffabric1 
+        ports:
+            - "8984:5984"

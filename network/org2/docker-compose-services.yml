@@ -2,15 +2,15 @@
 version: '3.2'
 
 networks:
-    skcript:
+    hlffabric1:
         external: 
-            name: skcript
+            name: hlffabric1
 
 services:
 
     ca_org2:
         networks:
-            skcript:
+            hlffabric1:
                 aliases:
                     - ca_org2
         deploy:
@@ -24,6 +24,7 @@ services:
                     - node.hostname == intel-sawtooth
         image: hyperledger/fabric-ca:x86_64-1.1.0
         hostname: ca.org2.example.com
+	container_name: ca.org2.example.com
         environment:
             - FABRIC_CA_HOME=/etc/hyperledger/fabric-ca-server
             - FABRIC_CA_SERVER_CA_NAME=ca_org2
@@ -33,7 +34,7 @@ services:
             - "8054:7054"   
         command: sh -c 'fabric-ca-server start -b admin:adminpw -d'
         volumes:
-            - /var/mynetwork/certs/crypto-config/peerOrganizations/org2.example.com/ca/:/etc/hyperledger/fabric-ca-server-config
+            - /home/ubuntu/efsmount/mynetwork/certs/crypto-config/peerOrganizations/org2.example.com/ca/:/etc/hyperledger/fabric-ca-server-config
 
     couchdb0_org2:
         deploy:
@@ -47,8 +48,9 @@ services:
                     - node.hostname == intel-sawtooth
         image: hyperledger/fabric-couchdb:x86_64-0.4.6
         hostname: couchdb0_org2
+	container_name: couchdb0_org2
         networks:
-           - skcript
+           - hlffabric1
 
     couchdb1_org2:
         deploy:
@@ -62,5 +64,6 @@ services:
                     - node.hostname == intel-sawtooth
         image: hyperledger/fabric-couchdb:x86_64-0.4.6
         hostname: couchdb1_org2
+	container_name: couchdb1_org2
         networks:
-           - skcript
+           - hlffabric1
