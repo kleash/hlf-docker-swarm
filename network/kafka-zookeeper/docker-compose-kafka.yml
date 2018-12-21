@@ -1,10 +1,10 @@
 version: '3.2'
 #
 networks:
-  skcript:
+  hlffabric1:
     # If network is created with deplyment, Chaincode container cannot connect to network
     external:
-      name: skcript
+      name: hlffabric1
 
 services:
   kafka0:
@@ -21,18 +21,19 @@ services:
     image: hyperledger/fabric-kafka
     # Give network alias
     networks:
-      skcript:
+      hlffabric1:
         aliases:
           - kafka0
+    container_name: kafka0
     environment:
+      - KAFKA_BROKER_ID=0
+      - KAFKA_ZOOKEEPER_CONNECT=zookeeper0:2181,zookeeper1:2181,zookeeper2:2181
       - KAFKA_MESSAGE_MAX_BYTES=103809024 # 99 * 1024 * 1024 B
       - KAFKA_REPLICA_FETCH_MAX_BYTES=103809024 # 99 * 1024 * 1024 B
       - KAFKA_UNCLEAN_LEADER_ELECTION_ENABLE=false
-      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=skcript
-      - KAFKA_BROKER_ID=0
+      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=hlffabric1
       - KAFKA_MIN_INSYNC_REPLICAS=2
       - KAFKA_DEFAULT_REPLICATION_FACTOR=3
-      - KAFKA_ZOOKEEPER_CONNECT=zookeeper0:2181,zookeeper1:2181,zookeeper2:2181
       - KAFKA_ZOOKEEPER_CONNECTION_TIMEOUT_MS=36000
       - KAFKA_ZOOKEEPER_SESSION_TIMEOUT_MS=36000
 
@@ -50,14 +51,15 @@ services:
     image: hyperledger/fabric-kafka
     # Give network alias
     networks:
-      skcript:
+      hlffabric1:
         aliases:
           - kafka1
+    container_name: kafka1
     environment:
       - KAFKA_MESSAGE_MAX_BYTES=103809024 # 99 * 1024 * 1024 B
       - KAFKA_REPLICA_FETCH_MAX_BYTES=103809024 # 99 * 1024 * 1024 B
       - KAFKA_UNCLEAN_LEADER_ELECTION_ENABLE=false
-      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=skcript
+      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=hlffabric1
       - KAFKA_BROKER_ID=1
       - KAFKA_DEFAULT_REPLICATION_FACTOR=3
       - KAFKA.MIN_INSYNC_REPLICAS=2
@@ -79,14 +81,15 @@ services:
     image: hyperledger/fabric-kafka
     # Give network alias
     networks:
-      skcript:
+      hlffabric1:
         aliases:
           - kafka2
+    container_name: kafka2
     environment:
       - KAFKA_MESSAGE_MAX_BYTES=103809024 # 99 * 1024 * 1024 B
       - KAFKA_REPLICA_FETCH_MAX_BYTES=103809024 # 99 * 1024 * 1024 B
       - KAFKA_UNCLEAN_LEADER_ELECTION_ENABLE=false
-      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=skcript
+      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=hlffabric1
       - KAFKA_BROKER_ID=2
       - KAFKA_DEFAULT_REPLICATION_FACTOR=3
       - KAFKA.MIN_INSYNC_REPLICAS=2
@@ -104,18 +107,19 @@ services:
       placement:
         constraints:
           - node.hostname == intel-sawtooth
+    container_name: kafka3
     hostname: kafka3
     image: hyperledger/fabric-kafka
     # Give network alias
     networks:
-      skcript:
+      hlffabric1:
         aliases:
           - kafka3
     environment:
       - KAFKA_MESSAGE_MAX_BYTES=103809024 # 99 * 1024 * 1024 B
       - KAFKA_REPLICA_FETCH_MAX_BYTES=103809024 # 99 * 1024 * 1024 B
       - KAFKA_UNCLEAN_LEADER_ELECTION_ENABLE=false
-      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=skcript
+      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=hlffabric1
       - KAFKA_BROKER_ID=3
       - KAFKA_DEFAULT_REPLICATION_FACTOR=3
       - KAFKA.MIN_INSYNC_REPLICAS=2
