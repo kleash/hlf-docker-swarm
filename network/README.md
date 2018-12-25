@@ -6,31 +6,28 @@
 ./create_network.sh
 ```
 
-- After Joining, in compose file, update the node hostnames.
-- Deploy Kafka
+- After Joining, move crypto certs to common folders
 ```
-./deploy_services.sh
+./move_crypto.sh
 ```
-- Deploy the services for respective hostname. Example
+- Set hostname of all 3 machines in .env
 ```
-./scripts/ch/network/deploy_services_machine1.sh
+nano .env
 ```
-- Repeat above until all services are deployed
-- Install the channels. Example
+- Populate hostname in all compose yamls
 ```
-./scripts/ch/channel/create_and_join_ch.sh
+./populate_hostname.sh
 ```
-- Fetch and Join the channel from an other node
+- Deploy the containers
 ```
-./scripts/state/channel/fetch_and_join_ch.sh
+./populate_hostname.sh
 ```
-- Repeat all until channels are configured
-- Install the chaincodes. Example
+- Check services status
 ```
-./scripts/ch/chaincode/install_ch_cc.sh
+docker service ls | grep "0/1"
 ```
-- Install the same in corresponding org
+- Setup channels and chaincode
 ```
-./scripts/state/chaincode/install_ch_cc.sh
+./scripts/create_channel.sh
+./scripts/install_chaincodes.sh
 ```
-- Repeat until all done
