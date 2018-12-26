@@ -18,7 +18,7 @@ services:
             placement:
                 constraints:
                     - node.hostname == intel-sawtooth
-        image: hyperledger/fabric-peer:$IMAGE_TAG
+        image: hyperledger/fabric-peer:latest
         hostname: peer0.org1.example.com
         container_name: peer0.org1.example.com
         environment:
@@ -77,7 +77,7 @@ services:
             placement:
                 constraints:
                     - node.hostname == intel-sawtooth
-        image: hyperledger/fabric-peer:$IMAGE_TAG
+        image: hyperledger/fabric-peer:latest
         hostname: peer1.org1.example.com
         container_name: peer1.org1.example.com
         environment:
