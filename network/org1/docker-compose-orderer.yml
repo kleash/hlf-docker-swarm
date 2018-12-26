@@ -22,7 +22,7 @@ services:
         working_dir: /opt/gopath/src/github.com/hyperledger/fabric/orderer
         command: orderer
         hostname: orderer0.example.com
-	container_name: orderer0.example.com
+        container_name: orderer0.example.com
         environment:
             - ORDERER_GENERAL_LOGLEVEL=debug
             - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
