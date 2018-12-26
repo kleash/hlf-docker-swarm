@@ -9,7 +9,7 @@ networks:
 services:
   zookeeper0:
     hostname: zookeeper0.example.com
-    image: hyperledger/fabric-zookeeper
+    image: hyperledger/fabric-zookeeper:$IMAGE_TAG
     deploy:
       replicas: 1
       restart_policy:
@@ -42,7 +42,7 @@ services:
       placement:
         constraints:
           - node.hostname == intel-sawtooth
-    image: hyperledger/fabric-zookeeper
+    image: hyperledger/fabric-zookeeper:$IMAGE_TAG
     # Give network alias
     networks:
       - hlffabric1
@@ -58,7 +58,7 @@ services:
         constraints:
           - node.hostname == intel-sawtooth
     hostname: zookeeper2.example.com
-    image: hyperledger/fabric-zookeeper
+    image: hyperledger/fabric-zookeeper:$IMAGE_TAG
     # Give network alias
     networks:
       - hlffabric1
