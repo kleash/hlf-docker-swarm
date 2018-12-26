@@ -22,7 +22,7 @@ services:
             placement:
                 constraints:
                     - node.hostname == intel-sawtooth
-        image: hyperledger/fabric-ca:x86_64-1.1.0
+        image: hyperledger/fabric-ca:$IMAGE_TAG
         hostname: ca.org1.example.com
         container_name: ca.org1.example.com
         environment:
