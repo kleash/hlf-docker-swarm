@@ -3,6 +3,16 @@
 # sudo chown -R $USER:$USER /var/mynetwork
 rm -rf mkdir /home/ubuntu/efsmount/mynetwork/*
 
+# Creating directories for ledger
+cd /home/ubuntu/efsmount/mynetwork
+mkdir orderer0.example.com
+mkdir orderer1.example.com
+mkdir peer0.org1.example.com
+mkdir peer1.org1.example.com
+mkdir peer0.org2.example.com
+mkdir peer1.org2.example.com
+cd -
+
 mkdir -p /home/ubuntu/efsmount/mynetwork/chaincode
 mkdir -p /home/ubuntu/efsmount/mynetwork/certs
 mkdir -p /home/ubuntu/efsmount/mynetwork/bin

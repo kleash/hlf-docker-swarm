@@ -33,16 +33,6 @@ sed "$FLAG" "s/- node.hostname == .*/- node.hostname == $ORG2_HOSTNAME/g" $PEER_
 sed "$FLAG" "s/- node.hostname == .*/- node.hostname == $ORG2_HOSTNAME/g" $SERVICE_ORG2_COMPOSE_PATH
 sed "$FLAG" "s#- FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric-ca-server-config/.*#- FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric-ca-server-config/$ORG2_CA_PATH#g" $SERVICE_ORG2_COMPOSE_PATH
 
-# Creating directories for ledger
-cd /home/ubuntu/efsmount/mynetwork
-mkdir orderer0.example.com
-mkdir orderer1.example.com
-mkdir peer0.org1.example.com
-mkdir peer1.org1.example.com
-mkdir peer0.org2.example.com
-mkdir peer1.org2.example.com
-cd -
-
 if [ "$ARCH" == "Darwin" ]; then
   rm */**.ymlt
 fi
