@@ -48,7 +48,7 @@ services:
                     - node.hostname == intel-sawtooth
         image: hyperledger/fabric-couchdb:x86_64-0.4.6
         hostname: couchdb0_org2
-	container_name: couchdb0_org2
+        container_name: couchdb0_org2
         networks:
            - hlffabric1
 
@@ -64,6 +64,6 @@ services:
                     - node.hostname == intel-sawtooth
         image: hyperledger/fabric-couchdb:x86_64-0.4.6
         hostname: couchdb1_org2
-	container_name: couchdb1_org2
+        container_name: couchdb1_org2
         networks:
            - hlffabric1
