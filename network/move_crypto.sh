@@ -1,7 +1,7 @@
 # sudo mkdir -p /var/mynetwork
 # sudo chown -R $(whoami) /var/mynetwork
 # sudo chown -R $USER:$USER /var/mynetwork
-rm -rf mkdir /home/ubuntu/efsmount/mynetwork/*
+sudo rm -rf mkdir /home/ubuntu/efsmount/mynetwork/*
 
 # Creating directories for ledger
 cd /home/ubuntu/efsmount/mynetwork
