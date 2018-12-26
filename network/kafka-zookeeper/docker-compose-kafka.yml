@@ -18,7 +18,7 @@ services:
         constraints:
           - node.hostname == intel-sawtooth
     hostname: kafka0
-    image: hyperledger/fabric-kafka:latest
+    image: hyperledger/fabric-kafka:0.4.13
     # Give network alias
     networks:
       hlffabric1:
@@ -48,7 +48,7 @@ services:
         constraints:
           - node.hostname == intel-sawtooth
     hostname: kafka1
-    image: hyperledger/fabric-kafka:latest
+    image: hyperledger/fabric-kafka:0.4.13
     # Give network alias
     networks:
       hlffabric1:
@@ -78,7 +78,7 @@ services:
         constraints:
           - node.hostname == intel-sawtooth
     hostname: kafka2
-    image: hyperledger/fabric-kafka:latest
+    image: hyperledger/fabric-kafka:0.4.13
     # Give network alias
     networks:
       hlffabric1:
@@ -109,7 +109,7 @@ services:
           - node.hostname == intel-sawtooth
     container_name: kafka3
     hostname: kafka3
-    image: hyperledger/fabric-kafka:latest
+    image: hyperledger/fabric-kafka:0.4.13
     # Give network alias
     networks:
       hlffabric1:

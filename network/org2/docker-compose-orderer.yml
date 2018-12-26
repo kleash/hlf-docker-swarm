@@ -18,7 +18,7 @@ services:
       placement:
         constraints:
           - node.hostname == intel-sawtooth
-    image: hyperledger/fabric-orderer:latest
+    image: hyperledger/fabric-orderer:1.3.0
     working_dir: /opt/gopath/src/github.com/hyperledger/fabric/orderer
     command: orderer
     hostname: orderer1.example.com
