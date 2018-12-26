@@ -24,7 +24,7 @@ services:
                     - node.hostname == intel-sawtooth
         image: hyperledger/fabric-ca:x86_64-1.1.0
         hostname: ca.org1.example.com
-	container_name: ca.org1.example.com
+        container_name: ca.org1.example.com
         environment:
             - FABRIC_CA_HOME=/etc/hyperledger/fabric-ca-server
             - FABRIC_CA_SERVER_CA_NAME=ca_org1
@@ -49,7 +49,7 @@ services:
         image: hyperledger/fabric-tools:x86_64-1.1.0
         tty: true
         hostname: cli
-	container_name: cli
+        container_name: cli
         environment:
           - GOPATH=/opt/gopath
           - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
@@ -89,7 +89,7 @@ services:
                     - node.hostname == intel-sawtooth
         image: hyperledger/fabric-couchdb:x86_64-0.4.6
         hostname: couchdb0_org1
-	container_name: couchdb0_org1
+        container_name: couchdb0_org1
         networks:
            - hlffabric1   
         ports:
@@ -107,7 +107,7 @@ services:
                     - node.hostname == intel-sawtooth
         image: hyperledger/fabric-couchdb:x86_64-0.4.6
         hostname: couchdb1_org1
-	container_name: couchdb1_org1
+        container_name: couchdb1_org1
         networks:
            - hlffabric1 
         ports:
