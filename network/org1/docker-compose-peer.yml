@@ -54,6 +54,7 @@ services:
             - /home/ubuntu/efsmount/mynetwork/certs/crypto-config/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls:/var/hyperledger/tls
             - /home/ubuntu/efsmount/mynetwork/certs/crypto-config/peerOrganizations/org1.example.com/users:/var/hyperledger/users
             - /home/ubuntu/efsmount/mynetwork/certs/config/:/var/hyperledger/config
+            - /home/ubuntu/efsmount/mynetwork/peer0.org1.example.com:/var/hyperledger/production
         command: peer node start
         working_dir: /opt/gopath/src/github.com/hyperledger/fabric/peer
         depends_on:
@@ -114,6 +115,7 @@ services:
             - /home/ubuntu/efsmount/mynetwork/certs/crypto-config/peerOrganizations/org1.example.com/peers/peer1.org1.example.com/tls:/var/hyperledger/tls
             - /home/ubuntu/efsmount/mynetwork/certs/crypto-config/peerOrganizations/org1.example.com/users:/var/hyperledger/users
             - /home/ubuntu/efsmount/mynetwork/certs/config/:/var/hyperledger/config
+            - /home/ubuntu/efsmount/mynetwork/peer1.org1.example.com:/var/hyperledger/production
         command: peer node start
         working_dir: /opt/gopath/src/github.com/hyperledger/fabric/peer
         depends_on:

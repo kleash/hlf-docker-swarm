@@ -60,6 +60,7 @@ services:
             - /home/ubuntu/efsmount/mynetwork/certs/crypto-config/ordererOrganizations/example.com/orderers/orderer0.example.com/msp:/var/hyperledger/msp
             - /home/ubuntu/efsmount/mynetwork/certs/crypto-config/ordererOrganizations/example.com/orderers/orderer0.example.com/tls:/var/hyperledger/tls
             - /home/ubuntu/efsmount/mynetwork/certs/config/:/var/hyperledger/config
+            - /home/ubuntu/efsmount/mynetwork/orderer0.example.com:/var/hyperledger/production/orderer
         networks:
           hlffabric1:
             aliases:

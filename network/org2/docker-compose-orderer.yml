@@ -58,6 +58,7 @@ services:
       - /home/ubuntu/efsmount/mynetwork/certs/crypto-config/ordererOrganizations/example.com/orderers/orderer1.example.com/msp:/var/hyperledger/msp
       - /home/ubuntu/efsmount/mynetwork/certs/crypto-config/ordererOrganizations/example.com/orderers/orderer1.example.com/tls:/var/hyperledger/tls
       - /home/ubuntu/efsmount/mynetwork/certs/config/:/var/hyperledger/config
+      - /home/ubuntu/efsmount/mynetwork/orderer1.example.com:/var/hyperledger/production/orderer
     ports:
       - 8050:7050
     networks:
