@@ -20,7 +20,7 @@ services:
                     - node.hostname == intel-sawtooth
         image: hyperledger/fabric-peer:x86_64-1.1.0
         hostname: peer0.org1.example.com
-	container_name: peer0.org1.example.com
+        container_name: peer0.org1.example.com
         environment:
             - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
             - CORE_PEER_NETWORKID=hlffabric1
@@ -78,7 +78,7 @@ services:
                     - node.hostname == intel-sawtooth
         image: hyperledger/fabric-peer:x86_64-1.1.0
         hostname: peer1.org1.example.com
-	container_name: peer1.org1.example.com
+        container_name: peer1.org1.example.com
         environment:
             - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
             - CORE_PEER_NETWORKID=hlffabric1
