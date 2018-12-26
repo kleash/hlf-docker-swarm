@@ -20,7 +20,7 @@ nano .env
 ```
 - Deploy the containers
 ```
-./populate_hostname.sh
+./start_all.sh
 ```
 - Check services status
 ```
