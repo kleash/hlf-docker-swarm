@@ -10,7 +10,7 @@ mkdir -p /home/ubuntu/efsmount/mynetwork/bin
 # git clone https://github.com/hyperledger/fabric /var/mynetwork/fabric-src/hyperledger/fabric
 #cd /var/mynetwork/fabric-src/hyperledger/fabric
 #git checkout release-1.1
-cd -
+#cd -
 cp -R crypto-config /home/ubuntu/efsmount/mynetwork/certs/
 cp -R config /home/ubuntu/efsmount/mynetwork/certs/
 cp -R ../chaincodes/* /home/ubuntu/efsmount/mynetwork/chaincode/
