@@ -65,3 +65,8 @@ services:
           hlffabric1:
             aliases:
                 - orderer0.example.com
+        depends_on:
+            - kafka0
+            - kafka1
+            - kafka2
+            - kafka3
