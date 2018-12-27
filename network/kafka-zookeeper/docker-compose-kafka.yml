@@ -36,6 +36,10 @@ services:
       - KAFKA_DEFAULT_REPLICATION_FACTOR=3
       - KAFKA_ZOOKEEPER_CONNECTION_TIMEOUT_MS=36000
       - KAFKA_ZOOKEEPER_SESSION_TIMEOUT_MS=36000
+    depends_on:
+      - zookeeper0
+      - zookeeper1
+      - zookeeper2
 
   kafka1:
     deploy:
@@ -66,6 +70,10 @@ services:
       - KAFKA_ZOOKEEPER_CONNECT=zookeeper0:2181,zookeeper1:2181,zookeeper2:2181
       - KAFKA_ZOOKEEPER_CONNECTION_TIMEOUT_MS=36000
       - KAFKA_ZOOKEEPER_SESSION_TIMEOUT_MS=36000
+    depends_on:
+      - zookeeper0
+      - zookeeper1
+      - zookeeper2
 
   kafka2:
     deploy:
@@ -96,6 +104,10 @@ services:
       - KAFKA_ZOOKEEPER_CONNECT=zookeeper0:2181,zookeeper1:2181,zookeeper2:2181
       - KAFKA_ZOOKEEPER_CONNECTION_TIMEOUT_MS=36000
       - KAFKA_ZOOKEEPER_SESSION_TIMEOUT_MS=36000
+    depends_on:
+      - zookeeper0
+      - zookeeper1
+      - zookeeper2
 
   kafka3:
     deploy:
@@ -126,3 +138,7 @@ services:
       - KAFKA_ZOOKEEPER_CONNECT=zookeeper0:2181,zookeeper1:2181,zookeeper2:2181
       - KAFKA_ZOOKEEPER_CONNECTION_TIMEOUT_MS=36000
       - KAFKA_ZOOKEEPER_SESSION_TIMEOUT_MS=36000
+    depends_on:
+      - zookeeper0
+      - zookeeper1
+      - zookeeper2
