@@ -75,6 +75,12 @@ services:
             # - /home/ubuntu/efsmount/mynetwork/bin/jq:/usr/local/bin/jq
         networks:
             - hlffabric1
+        depends_on:
+            - peer0_org1
+            - peer1_org1
+            - peer0_org2
+            - peer1_org2
+            - orderer_org1
 
     couchdb0_org1:
         deploy:

@@ -60,7 +60,7 @@ services:
     command: peer node start
     working_dir: /opt/gopath/src/github.com/hyperledger/fabric/peer
     depends_on:
-      - couchdb0
+      - couchdb0_org2
     networks:
       hlffabric1:
         aliases:
@@ -121,7 +121,7 @@ services:
     command: peer node start
     working_dir: /opt/gopath/src/github.com/hyperledger/fabric/peer
     depends_on:
-      - couchdb0
+      - couchdb1_org2
     ports:
       - 10051:7051
       - 10053:7053
